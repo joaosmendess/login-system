@@ -1,4 +1,4 @@
-import { Model, DataTypes } from "sequelize";
+import { Model, DataTypes, Optional } from "sequelize";
 import sequelize from "../config/sequelize";
 
 interface UserAttributes {
@@ -7,17 +7,17 @@ interface UserAttributes {
   password: string;
   email: string;
 }
-
-class User extends Model<UserAttributes> implements UserAttributes {
+interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
+class User
+  extends Model<UserAttributes, UserCreationAttributes>
+  implements UserAttributes
+{
   public id!: number;
   public name!: string;
   public password!: string;
   public email!: string;
 
-  static readonly tableName = "users";
-
-  // Desativar automaticamente os campos de data e hora
-  static readonly timestamps = false;
+  public readonly timestamps = false;
 }
 
 User.init(
@@ -41,7 +41,7 @@ User.init(
       unique: true,
     },
   },
-  { sequelize, modelName: "User" }
+  { sequelize, modelName: "User", tableName: "users", timestamps: false }
 );
 
 export default User;
