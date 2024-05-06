@@ -37,7 +37,7 @@
     <div class="container mt-4">
       <div class="mt-4 p-5 bg-primary text-white rounded">
         <h1>Register</h1>
-        <p>Enter your details below to create an account.</p>
+        <p>Insira seus dados abaixo para criar uma conta.</p>
       </div>
     </div>
 
@@ -65,7 +65,7 @@
               />
             </div>
             <div class="mb-3">
-              <label for="password-reg" class="form-label">Password</label>
+              <label for="password-reg" class="form-label">Senha</label>
               <input
                 type="password"
                 class="form-control"
@@ -74,16 +74,17 @@
               />
             </div>
             <div class="mb-3">
-              <label for="password-conf-reg" class="form-label">Confirm Password</label>
+              <label for="password-conf-reg" class="form-label">Confirme a Senha</label>
               <input
                 type="password"
                 class="form-control"
                 id="password-conf-reg"
                 name="confirm-password"
+                placeholder="mínimo 8 caracteres"
               />
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Registrar</button>
           </form>
           <br />
           {{#if ErrorMessage}}
@@ -93,7 +94,7 @@
           {{/if}}
           {{#if ConfirmMessage}}
             <div class="alert alert-success" role="alert">
-              <h4 class="alert-heading">User registered successfully!</h4>
+              <h4 class="alert-heading">Usuário registrado com sucesso, vá para login!</h4>
 
             </div>
 

@@ -38,13 +38,13 @@ export const registerController = async (req: Request, res: Response) => {
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
       return res.render("register", {
-        message: "This email is already in use",
+        ErrorMessage: "Email já em uso",
       });
     }
 
     if (password !== password_confirm) {
       return res.render("register", {
-        ErrorMessage: "Passwords do not match!",
+        ErrorMessage: "Senhas não compatíveis!",
       });
     }
     const hashedPassword = await bcrypt.hash(password, 8);
@@ -54,7 +54,9 @@ export const registerController = async (req: Request, res: Response) => {
       password: hashedPassword,
     });
 
-    res.render("register", { ConfirmMessage: "User registered successfully!" });
+    res.render("register", {
+      ConfirmMessage: "Usuário registrado com sucesso!",
+    });
   } catch (error) {
     console.log(error);
     res.render("register", {
